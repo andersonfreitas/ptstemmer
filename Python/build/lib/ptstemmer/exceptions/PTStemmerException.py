@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: LATIN-1 -*-
 '''
  * PTStemmer - A Stemming toolkit for the Portuguese language (C) 2008-2010 Pedro Oliveira
  * 
@@ -17,15 +15,11 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with PTStemmer. If not, see <http://www.gnu.org/licenses/>.
 '''
-from ptstemmer.implementations.OrengoStemmer import OrengoStemmer
-from ptstemmer.implementations.SavoyStemmer import SavoyStemmer
-from ptstemmer.implementations.PorterStemmer import PorterStemmer
-from ptstemmer.support import PTStemmerUtilities
 
-if __name__ == '__main__':
-    s = OrengoStemmer() #or PorterStemmer or SavoyStemmer
-    s.enableCaching(1000)
-    s.ignore(PTStemmerUtilities.fileToSet(""))
-    stem = s.getWordStem("ciências")
-    print (PTStemmerUtilities.removeDiacritics(stem))
-    print (s.getWordStem("extremamente"))
+class PTStemmerException(Exception):
+    def __init__(self,value):
+        self.parameter = value
+    def __str__(self):
+        return repr(self.parameter)
+
+        
